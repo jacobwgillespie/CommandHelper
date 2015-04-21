@@ -2,18 +2,16 @@
 
 package com.laytonsmith.abstraction.bukkit;
 
-import com.laytonsmith.abstraction.AbstractionObject;
-import com.laytonsmith.abstraction.MCEnchantment;
-import com.laytonsmith.abstraction.MCItemMeta;
-import com.laytonsmith.abstraction.MCItemStack;
-import com.laytonsmith.abstraction.MCMaterialData;
+import com.laytonsmith.abstraction.*;
 import com.laytonsmith.abstraction.blocks.MCMaterial;
 import com.laytonsmith.abstraction.bukkit.blocks.BukkitMCMaterial;
-import java.util.HashMap;
-import java.util.Map;
+import com.laytonsmith.core.nbt.NbtFactory.NbtCompound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -76,7 +74,7 @@ public class BukkitMCItemStack implements MCItemStack {
         if(is == null){
             return;
         }
-        is.addEnchantment(((BukkitMCEnchantment)e).__Enchantment(), level);
+        is.addEnchantment(((BukkitMCEnchantment) e).__Enchantment(), level);
     }
     
 	@Override
@@ -84,7 +82,7 @@ public class BukkitMCItemStack implements MCItemStack {
         if(is == null){
             return;
         }
-        is.addUnsafeEnchantment(((BukkitMCEnchantment)e).__Enchantment(), level);
+        is.addUnsafeEnchantment(((BukkitMCEnchantment) e).__Enchantment(), level);
     }
     
 	@Override
@@ -191,4 +189,9 @@ public class BukkitMCItemStack implements MCItemStack {
 		}
 		is.setItemMeta(((BukkitMCItemMeta)im).asItemMeta());
 	}
+
+    @Override
+    public NbtCompound getNbt() {
+        return NbtFactory.fromItemTag(is);
+    }
 }

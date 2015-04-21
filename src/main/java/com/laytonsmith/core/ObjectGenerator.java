@@ -36,6 +36,8 @@ import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.Exceptions;
 import com.laytonsmith.core.functions.Exceptions.ExceptionType;
+import com.laytonsmith.core.nbt.NbtFactory;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -223,6 +225,7 @@ public class ObjectGenerator {
             data = is.getDurability();
         }
 
+		NbtFactory.NbtCompound nbt = is.getNbt();
         CArray enchants = new CArray(t);
         for (Map.Entry<MCEnchantment, Integer> entry : is.getEnchantments().entrySet()) {
             CArray enchObj = CArray.GetAssociativeArray(t);

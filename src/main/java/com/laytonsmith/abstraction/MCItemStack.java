@@ -2,6 +2,8 @@
 package com.laytonsmith.abstraction;
 
 import com.laytonsmith.abstraction.blocks.MCMaterial;
+import com.laytonsmith.core.nbt.NbtFactory.NbtCompound;
+
 import java.util.Map;
 
 /**
@@ -29,4 +31,6 @@ public interface MCItemStack extends AbstractionObject{
 	public boolean hasItemMeta();
 	public MCItemMeta getItemMeta();
 	public void setItemMeta(MCItemMeta im);
+
+    public NbtCompound getNbt();
 }
